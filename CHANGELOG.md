@@ -8,10 +8,14 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-01-14
+
 * Added ArgoCD sync waves to LiteLLM to fix database migration timing (first installation)
 * Extracted repoUrl in argo-cd-resources to values.yaml for easier configuration
 * Added configuration for the OIDC patch (disabled by default)
 * Update docker image with the AAK OIDC patch
+* Upgrade open-webui to v0.6.43-1 (**Note**: this release has database updates, and you have to set  `replicaCount` to
+  one before updating and back to your count after upgrade. This issue has been fixed in 0.7.x release in core).
 
 ## [0.1.0] - 2025-12-16
 
@@ -22,5 +26,7 @@ See [keep a changelog] for information about writing changes to this log.
 * Comment out TTS/STT in Open-WebUI as this is not part of the default stack.
 * Disabled SSO in Open-WebUI.
 
-[Unreleased]: https://github.com/AarhusAI/documentation/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/AarhusAI/documentation/compare/0.1.1...HEAD
+
+[0.1.1]: https://github.com/AarhusAI/documentation/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/AarhusAI/documentation/releases/tag/0.1.0
