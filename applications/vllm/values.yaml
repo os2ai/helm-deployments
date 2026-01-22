@@ -43,11 +43,11 @@ vllm:
               operator: "In"
               values:
                 - "true"
-            - key: kubernetes.io/hostname
+            - key: nvidia.com/gpu.product
               operator: "In"
               values:
                 # Send this to the large GPU node
-                - "gpu1"
+                - GRID-A100D-80C
 
       - name: "embeddings"
         repository: "vllm/vllm-openai"
@@ -91,11 +91,11 @@ vllm:
                 operator: "In"
                 values:
                   - "true"
-              - key: kubernetes.io/hostname
+              - key: nvidia.com/gpu.product
                 operator: "In"
                 values:
                   # Send this to the small GPU node
-                  - "gpu2"
+                  - GRID-A100D-20C
 
     vllmApiKey:
       secretName: "vllm-secret"
