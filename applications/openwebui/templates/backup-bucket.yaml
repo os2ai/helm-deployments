@@ -1,0 +1,7 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: {{ .Release.Name }}-backup-bucket
+spec:
+  bucketName: {{ .Release.Name }}-backup-bucket
+  storageClassName: s3-bucket-retain
