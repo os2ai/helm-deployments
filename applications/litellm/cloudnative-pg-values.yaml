@@ -4,7 +4,7 @@ cloudnative-pg:
   # -- Override the full name of the chart
   fullnameOverride: cloudnative-pg-cluster
   # -- Override the namespace of the chart
-  namespaceOverride: "litellm"
+  namespaceOverride: ""
 
   ###
   # -- Type of the CNPG database. Available types:
