@@ -4,7 +4,7 @@ cloudnative-pg:
   # -- Override the full name of the chart
   fullnameOverride: cloudnative-pg-cluster
   # -- Override the namespace of the chart
-  namespaceOverride: "litellm"
+  namespaceOverride: ""
 
   ###
   # -- Type of the CNPG database. Available types:
@@ -372,11 +372,11 @@ cloudnative-pg:
 
   backups:
     # -- You need to configure backups manually, so backups are disabled by default.
-    enabled: false
+    enabled: true
 
     # -- Overrides the provider specific default endpoint. Defaults to:
     # S3: https://s3.<region>.amazonaws.com"
-    endpointURL: https://hel1.your-objectstorage.com  # Leave empty if using the default S3 endpoint
+    endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc  # Leave empty if using the default S3 endpoint
     # -- Specifies a CA bundle to validate a privately signed certificate.
     endpointCA:
       # -- Creates a secret with the given value if true, otherwise uses an existing secret.
@@ -393,9 +393,9 @@ cloudnative-pg:
     # -- One of `s3`, `azure` or `google`
     provider: s3
     s3:
-      region: hel1
-      bucket: kom1-cluster-backups
-      path: /litellm/
+      region:
+      bucket: litellm-backup-bucket
+      path: /
       accessKey: ""
       secretKey: ""
       # -- Use the role based authentication without providing explicitly the keys
@@ -418,7 +418,7 @@ cloudnative-pg:
       # -- Whether to create a secret for the backup credentials
       create: false
       # -- Name of the backup credentials secret
-      name: hetzner-s3-backup-credentials
+      name: litellm-backup-bucket-transformed
 
     wal:
       # -- WAL compression method. One of `` (for no compression), `gzip`, `bzip2` or `snappy`.

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: template-controller
+spec:
+  destinations:
+  - name: in-cluster
+    namespace: template-controller
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: false
+  sourceRepos:
+  - {{ .Values.repoUrl }} # git repository

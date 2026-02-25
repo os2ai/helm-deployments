@@ -375,7 +375,7 @@ cloudnative-pg:
 
     # -- Overrides the provider specific default endpoint. Defaults to:
     # S3: https://s3.<region>.amazonaws.com"
-    endpointURL: https://hel1.your-objectstorage.com  # Leave empty if using the default S3 endpoint
+    endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc  # Leave empty if using the default S3 endpoint
     # -- Specifies a CA bundle to validate a privately signed certificate.
     endpointCA:
       # -- Creates a secret with the given value if true, otherwise uses an existing secret.
@@ -392,9 +392,9 @@ cloudnative-pg:
     # -- One of `s3`, `azure` or `google`
     provider: s3
     s3:
-      region: hel1
-      bucket: kom1-cluster-backups
-      path: /openwebui/
+      region:
+      bucket: openwebui-backup-bucket
+      path: /
       accessKey: ""
       secretKey: ""
       # -- Use the role based authentication without providing explicitly the keys
@@ -417,7 +417,7 @@ cloudnative-pg:
       # -- Whether to create a secret for the backup credentials
       create: false
       # -- Name of the backup credentials secret
-      name: hetzner-s3-backup-credentials
+      name: openwebui-backup-bucket-transformed
 
     wal:
       # -- WAL compression method. One of `` (for no compression), `gzip`, `bzip2` or `snappy`.

@@ -33,6 +33,11 @@ apps:
     namespace: kube-system
     automated: true
 
+  - name: template-controller
+    project: template-controller
+    namespace: template-controller
+    automated: true
+
   ## Storage
   - name: cloudnative-pg-operator
     project: cloudnative-pg-operator

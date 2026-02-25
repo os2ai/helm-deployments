@@ -1,0 +1,7 @@
+apiVersion: v2
+name: template-controller
+version: 0.0.0
+dependencies:
+  - name: template-controller
+    version: 0.9.4
+    repository: oci://ghcr.io/kluctl/charts
