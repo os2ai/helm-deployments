@@ -8,6 +8,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Fixed
+* Rename webui dashboard ConfigMap data key from `dcgm-dashboard.json` to `openwebui-dashboard.json` to avoid Grafana dashboard filename collisions. Fixes #11.
+
 ## [0.2.0] - 2026-02-25
 
 * Changed nodeSelectorTerm on vllm deployments, for better upgradeability
