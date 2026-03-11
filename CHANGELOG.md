@@ -8,6 +8,19 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-03-10
+
+* Upgraded open-webui to v0.8.5 (last release was v0.6.43)
+  See [release](https://github.com/open-webui/open-webui/releases) for information about changes. This is a big jump in
+  versions, so we recommend you to check the release notes. _Note_ that you should set repalica count to 1 before
+  upgrading and back up once upgraded, which is due to the database migrations.
+* Groups share settings have changes, so it now has the values: "members" (string), True (boolean — anyone), False
+  (boolean — no one). Where "members" matches the default behavior from the last release. It is this change that has
+  held release here back.
+* The
+  tool [Open WebUI Permissions Manager](https://github.com/AarhusAI/open-webui-permissions-manager?tab=readme-ov-file#share-command)
+  has been updated to help update all groups to the same share setting.
+
 ## [0.2.0] - 2026-02-25
 
 * Changed nodeSelectorTerm on vllm deployments, for better upgradeability
@@ -32,6 +45,7 @@ See [keep a changelog] for information about writing changes to this log.
 * Disabled SSO in Open-WebUI.
 
 [Unreleased]: https://github.com/AarhusAI/documentation/compare/0.1.1...HEAD
-
+[0.3.0]: https://github.com/AarhusAI/documentation/compare/0.2.0...0.3.0
+[0.2.0]: https://github.com/AarhusAI/documentation/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/AarhusAI/documentation/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/AarhusAI/documentation/releases/tag/0.1.0

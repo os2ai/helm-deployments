@@ -7,7 +7,7 @@ open-webui:
   # -- Open WebUI image tags can be found here: https://github.com/open-webui/open-webui
   image:
     repository: ghcr.io/aarhusai/open-webui
-    tag: "v0.6.43-1"
+    tag: "v0.8.5-1"
     pullPolicy: "IfNotPresent"
 
   ollama:
@@ -298,6 +298,8 @@ open-webui:
           key: WEBUI_SECRET_KEY
     - name: ENABLE_NOTES
       value: "False"
+    - name: DEFAULT_GROUP_SHARE_PERMISSION
+      value: "members"
 
     # AAK ODIC patch config
     - name: AAK_OAUTH_ENABLE_ROLE_GROUPS_MAPPING
@@ -308,6 +310,8 @@ open-webui:
       value: "extensionAttribute7"
     - name: AAK_OAUTH_GROUP_ID_SEPARATOR
       value: ";"
+    - name: OAUTH_GROUP_DEFAULT_SHARE
+      value: "members"
 
     # Redis cache
     - name: REDIS_URL
