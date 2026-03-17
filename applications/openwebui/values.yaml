@@ -301,6 +301,10 @@ open-webui:
     - name: DEFAULT_GROUP_SHARE_PERMISSION
       value: "members"
 
+    # Admin
+    - name: ENABLE_ADMIN_CHAT_ACCESS
+      value: "False"
+
     # AAK ODIC patch config
     - name: AAK_OAUTH_ENABLE_ROLE_GROUPS_MAPPING
       value: "False" # Disabled as default
