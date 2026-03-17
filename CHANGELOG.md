@@ -8,6 +8,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Changed
+
+* Set admin access to other users chats to disabled (false) as default.
+
 ### Fixed
 
 * Rename webui dashboard ConfigMap data key from `dcgm-dashboard.json` to `openwebui-dashboard.json` to 
