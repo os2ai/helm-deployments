@@ -8,6 +8,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Changed
+
+* Allow `ClusterRole` and `ClusterRoleBinding` in the `cluster-resources` Argo CD AppProject so shared
+  cluster-scoped RBAC resources can be managed cleanly. See issue #21.
+
 ### Fixed
 
 * Rename webui dashboard ConfigMap data key from `dcgm-dashboard.json` to `openwebui-dashboard.json` to 
