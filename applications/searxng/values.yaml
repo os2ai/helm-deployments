@@ -4,7 +4,7 @@ searxng:
   image:
     repository: searxng/searxng
     # -- image tag
-    tag: 2025.11.24-5fcee9bc3
+    tag: 2026.3.13-3c1f68c59
     # -- image pull policy
     pullPolicy: Always
 
