@@ -11,6 +11,7 @@ See [keep a changelog] for information about writing changes to this log.
 ### Changed
 
 * Set admin access to other users chats to disabled (false) as default.
+* Licensed repo under MPL 2.0.
 
 ### Fixed
 
