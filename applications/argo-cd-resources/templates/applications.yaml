@@ -11,6 +11,10 @@ spec:
     repoURL: {{ $.Values.repoUrl }}
     path: applications/{{ .path | default .name }}
     targetRevision: HEAD
+    {{- if .directoryRecurse }}
+    directory:
+      recurse: {{ .directoryRecurse }}
+    {{- end }}
     helm:
       {{- if .releaseName }}
       releaseName: {{ .releaseName }}
