@@ -8,6 +8,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* &mdash;
+
+## [0.4.0-rc.0] - 2026-05-06
+
 ### Changed
 
 * Set admin access to other users chats to disabled (false) as default.
