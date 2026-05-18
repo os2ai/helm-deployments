@@ -194,7 +194,8 @@ data:
                     if tcs:
                         kept_tcs = [tc for tc in tcs if tc.get("id") in satisfied_ids]
                         content = msg.get("content")
-                        if not kept_tcs and not (content or "").strip():
+                        content_empty = not (content or "").strip()
+                        if not kept_tcs and content_empty:
                             self._log_debug(
                                 "Dropping assistant message with no content and all tool_calls orphaned"
                             )
