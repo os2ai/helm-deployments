@@ -35,6 +35,7 @@ data:
             self.trim_ratio = default_config.get("trim_ratio", 0.75)
             self.max_output_tokens = default_config.get("max_output_tokens", 2000)
             self.safety_buffer = default_config.get("safety_buffer", 500)
+            self.min_output_tokens = default_config.get("min_output_tokens", 256)
             self.debug = default_config.get("debug", False)
 
             # Context-window resolution: per-model map wins, then litellm's
@@ -136,7 +137,8 @@ data:
                 max_context_tokens - int(current_input_tokens) - self.safety_buffer
             )
             safe_completion_tokens = min(
-                requested_completion, max(256, int(available_for_completion * 0.75))
+                requested_completion,
+                max(self.min_output_tokens, int(available_for_completion * self.trim_ratio)),
             )
             return safe_completion_tokens
 
@@ -310,7 +312,7 @@ data:
 
                 self._log_debug(f"Safe completion tokens: {safe_completion_tokens}")
                 self._log_debug(
-                    f"Calculation: min({requested_completion}, max(256, ({max_context_tokens} - {int(current_tokens)} - {self.safety_buffer}) * 0.75))"
+                    f"Calculation: min({requested_completion}, max({self.min_output_tokens}, ({max_context_tokens} - {int(current_tokens)} - {self.safety_buffer}) * {self.trim_ratio}))"
                 )
 
                 # Update completion tokens in the request
