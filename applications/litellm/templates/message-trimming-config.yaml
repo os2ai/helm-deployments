@@ -223,33 +223,6 @@ data:
                     result.append(msg)
             return result
 
-        def _ensure_last_is_user(
-            self, messages: list, pop_trailing_tools: bool = False
-        ) -> list:
-            """Guarantee the conversation does not end on an assistant message.
-
-            Always appends a user continuation message if the terminus is an
-            assistant message (some chat templates reject assistant-terminal
-            conversations under `add_generation_prompt=True`).
-
-            When `pop_trailing_tools=True`, also pops any trailing `role: tool`
-            messages first — needed for strict templates (e.g. HF Mistral v0.3)
-            that reject tool-role messages outright. Note: popping can break
-            tool-call/tool-response pairings; callers should re-run
-            `_repair_tool_call_pairings` after to clean up.
-            """
-            if not messages:
-                return messages
-            result = list(messages)
-            if pop_trailing_tools:
-                while result and result[-1].get("role") == "tool":
-                    self._log_debug("Popping trailing tool message from terminus")
-                    result.pop()
-            if result and result[-1].get("role") == "assistant":
-                self._log_debug("Appending user continue message after assistant terminus")
-                result.append({"role": "user", "content": "Please continue"})
-            return result
-
         def _sanitize_messages(self, messages: list, model: Optional[str] = None) -> list:
             """Repair tool-call pairings and fix the terminus. Safe to call on
             every request.
