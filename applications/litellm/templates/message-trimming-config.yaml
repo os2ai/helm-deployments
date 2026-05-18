@@ -38,7 +38,9 @@ data:
             self.debug = default_config.get("debug", False)
 
             # Context-window resolution: per-model map wins, then litellm's
-            # built-in get_max_tokens, then this global default.
+            # built-in get_max_tokens, then this global default. 8192 is a
+            # conservative floor every modern chat model supports; only used
+            # when both the per-model map and litellm's lookup miss.
             self.default_max_context_tokens = default_config.get(
                 "default_max_context_tokens", 8192
             )
