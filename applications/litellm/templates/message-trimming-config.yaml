@@ -200,7 +200,7 @@ data:
                                 "Dropping assistant message with no content and all tool_calls orphaned"
                             )
                             continue
-                        new_msg = dict(msg)
+                        new_msg = msg.copy()
                         if kept_tcs:
                             new_msg["tool_calls"] = kept_tcs
                             advertised_ids.update(tc["id"] for tc in kept_tcs)
