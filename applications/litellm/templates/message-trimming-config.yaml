@@ -44,6 +44,8 @@ data:
             self.default_max_context_tokens = default_config.get(
                 "default_max_context_tokens", 8192
             )
+            # `or {}` guards against an explicit YAML null (`key:` with no
+            # value parses to None, which would TypeError on `in` checks).
             self.max_context_tokens_by_model = default_config.get(
                 "max_context_tokens_by_model", {}
             ) or {}
