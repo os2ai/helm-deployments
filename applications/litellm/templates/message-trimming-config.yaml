@@ -190,10 +190,21 @@ data:
             result = []
             advertised_ids = set()
             for msg in messages:
-                role = msg.get("role")
-                if role == "assistant":
-                    tcs = msg.get("tool_calls") or []
-                    if tcs:
+                match msg.get("role"):
+                    case "tool":
+                        if msg.get("tool_call_id") in advertised_ids:
+                            result.append(msg)
+                        else:
+                            self._log_debug(
+                                f"Dropping orphan tool message (tool_call_id={msg.get('tool_call_id')})"
+                            )
+
+                    case "assistant":
+                        tcs = msg.get("tool_calls") or []
+                        if not tcs:
+                            result.append(msg)
+                            continue
+
                         kept_tcs = [tc for tc in tcs if tc.get("id") in satisfied_ids]
                         content = msg.get("content")
                         content_empty = not (content or "").strip()
@@ -202,6 +213,7 @@ data:
                                 "Dropping assistant message with no content and all tool_calls orphaned"
                             )
                             continue
+
                         new_msg = msg.copy()
                         if kept_tcs:
                             new_msg["tool_calls"] = kept_tcs
@@ -212,17 +224,9 @@ data:
                                 "Stripped all orphan tool_calls from assistant message"
                             )
                         result.append(new_msg)
-                    else:
+
+                    case _:
                         result.append(msg)
-                elif role == "tool":
-                    if msg.get("tool_call_id") in advertised_ids:
-                        result.append(msg)
-                    else:
-                        self._log_debug(
-                            f"Dropping orphan tool message (tool_call_id={msg.get('tool_call_id')})"
-                        )
-                else:
-                    result.append(msg)
             return result
 
         def _sanitize_messages(self, messages: list, model: Optional[str] = None) -> list:
