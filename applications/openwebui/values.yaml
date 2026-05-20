@@ -486,7 +486,7 @@ open-webui:
         ### Eksempler på DÅRLIGE queries (undgå):
         ❌ "Aarhus byråd" (for bred)
         ❌ "medlemmer Aarhus byråd" (unatural ordstilling)
-        ❌ "hvordan virker byråd" (forkert fokus)  
+        ❌ "hvordan virker byråd" (forkert fokus)
 
         ### Hvornår søge:
         ✓ Fakta, tal, navne, aktuelle data
@@ -510,7 +510,7 @@ open-webui:
       value: |
         ### Opgave:
         Besvar brugerens spørgsmål ved hjælp af den medfølgende kontekst, og inkorporer kildehenvisninger i formatet [id] **kun når `<source>`-tagget indeholder en eksplicit id-attribut** (f.eks. `<source id="1">`).
- 
+
         ### Retningslinjer:
         - Hvis du ikke kender svaret, skal du tydeligt angive dette.
         - Hvis du er usikker, skal du bede brugeren om afklaring.
@@ -521,14 +521,14 @@ open-webui:
         - Undlad at citere, hvis `<source>`-tagget ikke indeholder en id-attribut.
         - Brug ikke XML-tags i dit svar.
         - Sørg for, at kildehenvisninger er kortfattede og direkte relaterede til den givne information.
- 
+
         ### Eksempel på kildehenvisning:
         Hvis brugeren spørger om et bestemt emne, og informationen findes i en kilde med en angivet id-attribut, skal svaret indeholde kildehenvisningen som i følgende eksempel:
         * "Ifølge undersøgelsen øger den foreslåede metode effektiviteten med 20 % [1]."
- 
+
         ### Output:
         Giv et klart og direkte svar på brugerens spørgsmål, og inkluder kildehenvisninger i formatet [id] kun når et `<source>`-tag med id-attribut er til stede i konteksten.
- 
+
         <context>
         {{CONTEXT}}
         </context>
