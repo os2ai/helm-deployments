@@ -8,7 +8,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
-* &mdash;
+* Updated trim message litellm guardrail to support tool call and minor bug fixes.
 
 ## [0.4.0-rc.0] - 2026-05-06
 
