@@ -22,11 +22,6 @@ See [keep a changelog] for information about writing changes to this log.
 * Added optional `directoryRecurse` configuration for Argo CD applications to render
   `spec.source.directory.recurse` when explicitly enabled.
 
-### Changed
-
-* Set admin access to other users chats to disabled (false) as default.
-* Licensed repo under MPL 2.0.
-
 ### Fixed
 
 * Rename webui dashboard ConfigMap data key from `dcgm-dashboard.json` to `openwebui-dashboard.json` to 
