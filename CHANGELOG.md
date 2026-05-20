@@ -10,7 +10,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 * &mdash;
 
-## [0.4.0-rc.0] - 2026-05-06
+## [0.4.0] - 2026-05-20
 
 ### Changed
 
