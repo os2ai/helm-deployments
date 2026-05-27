@@ -7,7 +7,7 @@ open-webui:
   # -- Open WebUI image tags can be found here: https://github.com/open-webui/open-webui
   image:
     repository: ghcr.io/os2ai/open-webui
-    tag: "v0.8.10-4"
+    tag: "v0.8.12-4"
     pullPolicy: "IfNotPresent"
 
   ollama:
@@ -302,6 +302,13 @@ open-webui:
       value: "members"
 
     # Admin
+    - name: WEBUI_ADMIN_EMAIL
+      value: info@os2ai.os2.dk
+    - name: WEBUI_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: openwebui-secrets
+          key: WEBUI_ADMIN_PASSWORD
     - name: ENABLE_ADMIN_CHAT_ACCESS
       value: "False"
 
@@ -425,14 +432,19 @@ open-webui:
 #          name: openwebui-secrets
 #          key: TTS_API_KEY
 
+    # API key generation
+    - name: ENABLE_API_KEY
+      value: "False"
+    - name: ENABLE_API_KEYS_ENDPOINT_RESTRICTIONS
+      value: "True"
+    - name: API_KEYS_ALLOWED_ENDPOINTS
+      value: "/api/v1/retrieval/,/api/v1/auths/,/api/v1/models,/api/models,/api/v1/models/base,/api/models/base,/api/chat/completions,/api/v1/chat/completions,/health"
+
     # Disable direct connections (do not allow users to connect to new servers)
     - name: ENABLE_DIRECT_CONNECTIONS
       value: "False"
     # User profile notification webhooks
     - name: ENABLE_USER_WEBHOOKS
-      value: "False"
-    # Disable api key generation (in user profile)
-    - name: ENABLE_API_KEY
       value: "False"
     # Sharing
     - name: ENABLE_COMMUNITY_SHARING

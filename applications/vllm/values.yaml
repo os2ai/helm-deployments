@@ -113,6 +113,6 @@ vllm:
     resources:
       requests:
         cpu: 400m
-        memory: 800Mi
+        memory: 1Gi
       limits:
-        memory: 1024Mi
+        memory: 2Gi
