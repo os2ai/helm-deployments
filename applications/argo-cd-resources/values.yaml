@@ -137,3 +137,10 @@ apps:
       - authentik-values.yaml
       - cloudnative-pg-values.yaml
       - redis-replication-values.yaml
+
+  - name: search-agent
+    project: search-agent
+    namespace: search-agent
+    automated: true
+    valueFiles:
+      - values.yaml
