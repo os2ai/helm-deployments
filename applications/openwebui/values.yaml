@@ -547,7 +547,7 @@ open-webui:
 
     # Web-search
     - name: ENABLE_WEB_SEARCH
-      value: "True"
+      value: "False"
     - name: WEB_SEARCH_ENGINE
       value: "searxng"
     - name: WEB_SEARCH_RESULT_COUNT

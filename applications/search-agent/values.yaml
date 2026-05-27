@@ -1,0 +1,61 @@
+image:
+  repository: ghcr.io/aarhusai/search-agent
+  tag: 0.0.1
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  port: 8001
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 1500m
+    memory: 2Gi
+
+redis:
+  image: redis:7.4.2-alpine3.21
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+env:
+  llmModel: "AarhusAI-default"
+  llmBaseUrl: "http://litellm.litellm.svc.cluster.local:4000/v1"
+  llmTimeout: "60"
+
+  searxngUrl: "http://searxng.searxng.svc.cluster.local:8080"
+  searxngTimeout: "15"
+
+  datetimeTimezone: "Europe/Copenhagen"
+  datetimeFormat: "%A, %B %-d, %Y, %H:%M %Z"
+  mcpAllowedHosts: '["search-agent.search-agent.svc.cluster.local:8001","search-agent:8001","localhost:8001"]'
+  searchQueryPlannerPrompt: ""
+  searchAnalyzeSynthesizePrompt: ""
+  searchPipelineTimeout: "90"
+  searchSkipPlannerForSimpleQueries: "true"
+  searchMaxQueries: "3"
+  searchMaxResults: "6"
+  searchSimpleQueryMaxWords: "15"
+  searchSimpleQueryMaxQuestions: "1"
+  searchFetchPageContent: "true"
+  searchFetchMaxPages: "5"
+  searchFetchTimeout: "10"
+  searchFetchMaxChars: "5000"
+  searchFetchMaxBytes: "2000000"
+
+  cacheBackend: "redis"
+  cacheRedisUrl: "redis://redis:6379/0"
+  cacheFetchTtl: "3600"
+  cacheFetchNegativeTtl: "300"
+  cacheSearxngTtl: "300"
+  cachePlannerTtl: "21600"
+
+  debug: "false"

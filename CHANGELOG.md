@@ -8,7 +8,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
-* &mdash;
+* Added agentic search tool and config to enabled it
 
 ## [0.4.0] - 2026-05-20
 
