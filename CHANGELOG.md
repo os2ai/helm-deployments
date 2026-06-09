@@ -8,6 +8,22 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Changed
+
+* ...
+
+### Added
+
+* ...
+
+### Fixed
+
+* ...
+
+## [0.5.0-rc.0] - 2026-06-09
+
+### Changed
+
 * Upgrade to open-webui 0.8.12
 
 ## [0.4.0] - 2026-05-20
