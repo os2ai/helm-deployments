@@ -14,7 +14,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Added
 
-* ...
+* Integration of OS2ai Adgangskomponent, providing authentication with
+  Fælleskommunal Adgangsstyring (FKA). The OS2ai Adgangskomponent runs as a
+  configured Keycloak-instance in the cluster.
 
 ### Fixed
 
