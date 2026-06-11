@@ -57,7 +57,7 @@ apps:
   - name: prometheus-stack
     project: monitoring
     namespace: monitoring
-    automated: false
+    automated: true
     syncOptions:
       - ServerSideApply=true
 
@@ -86,7 +86,7 @@ apps:
   - name: openwebui
     project: openwebui
     namespace: openwebui
-    automated: false
+    automated: true
     valueFiles:
       - cloudnative-pg-values.yaml
       - qdrant-values.yaml
@@ -95,7 +95,7 @@ apps:
   - name: litellm
     project: litellm
     namespace: litellm
-    automated: false
+    automated: true
     valueFiles:
       - litellm-values.yaml
       - cloudnative-pg-values.yaml
@@ -110,14 +110,14 @@ apps:
   - name: doc-ingestion
     project: doc-ingestion
     namespace: doc-ingestion
-    automated: false
+    automated: true
     valueFiles:
       - values.yaml
 
   - name: vllm
     project: vllm
     namespace: vllm
-    automated: false
+    automated: true
     valueFiles:
       - values.yaml
 
@@ -125,7 +125,7 @@ apps:
   - name: searxng
     project: searxng
     namespace: searxng
-    automated: false
+    automated: true
     valueFiles:
       - values.yaml
 
