@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: keycloak-operator
+  namespace: argo-cd
+spec:
+  destinations:
+  - name: in-cluster
+    namespace: keycloak-operator
+    server: https://kubernetes.default.svc
+  - name: in-cluster
+    namespace: adgangskomponent
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: false
+  sourceRepos:
+  - {{ .Values.repoUrl }} # git repository

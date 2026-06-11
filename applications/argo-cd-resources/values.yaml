@@ -137,3 +137,18 @@ apps:
       - authentik-values.yaml
       - cloudnative-pg-values.yaml
       - redis-replication-values.yaml
+
+  - name: keycloak-operator
+    project: keycloak-operator
+    namespace: keycloak-operator
+    automated: true
+    valueFiles:
+      - values.yaml
+
+  - name: adgangskomponent
+    project: adgangskomponent
+    namespace: adgangskomponent
+    automated: true
+    valueFiles:
+      - cloudnative-pg-values.yaml
+      - adgangskomponent-values.yaml

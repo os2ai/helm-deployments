@@ -1,0 +1,51 @@
+
+adgangskomponent:
+  domain: adgang.<FQDN>
+
+  realm:
+    name: <REALM>
+    displayName: <DISPLAY NAME>
+  systems:
+    - name: os2ai
+      displayName: OS2ai
+      description: OS2ai Systemet
+      rootUrl: https://ai.<FQDN>/
+      adminUrl: https://ai.<FQDN>/
+      baseUrl: https://ai.<FQDN>/
+      # TODO: should be generated instead of being set here - but we also need to inject in client systems.
+      # We probably need a better approach than simple templating.
+      # An operator creates secrets on demand perhaps?
+      secret: <MUST REGEN>
+      secretGenerationTime: UNIX TIME SECONDS>
+      redirectUris:
+        - https://ai.<FQDN>/*
+      postLogoutRedirectUris: https://ai.<FQDN>/*
+      webOrigins:
+        - +
+      claims:
+        - key: groups
+          mappings:
+            - entityId: http://adgang.os2.eu/roles/usersystemrole/os2ai/builder/1
+              value: Builder
+        - key: roles
+          type: exclusive
+          mappings:
+            - entityId: http://adgang.os2.eu/roles/usersystemrole/os2ai/admin/1
+              value: admin
+            - entityId: http://adgang.os2.eu/roles/usersystemrole/os2ai/user/1
+              value: user
+
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+    tlsSecret: keycloak-tls-secret
+  db:
+    vendor: postgres
+    host: cloudnative-pg-cluster-rw
+    database: adgangskomponent
+    usernameSecret:
+      name: cloudnative-pg-cluster-admin
+      key: username
+    passwordSecret:
+      name: cloudnative-pg-cluster-admin
+      key: password

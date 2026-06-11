@@ -1,0 +1,7 @@
+apiVersion: v2
+name: kubitus-keycloak-operator
+version: 0.0.0
+dependencies:
+  - name: keycloak-operator
+    version: 1.0.20260122011216
+    repository: https://gitlab.com/api/v4/projects/50848788/packages/helm/stable
