@@ -7,7 +7,7 @@ open-webui:
   # -- Open WebUI image tags can be found here: https://github.com/open-webui/open-webui
   image:
     repository: ghcr.io/os2ai/open-webui
-    tag: "v0.8.12-3"
+    tag: "v0.9.6-6"
     pullPolicy: "IfNotPresent"
 
   ollama:
@@ -300,6 +300,8 @@ open-webui:
       value: "False"
     - name: DEFAULT_GROUP_SHARE_PERMISSION
       value: "members"
+    - name: DEFAULT_MODEL_PARAMS
+      value: '{"function_calling": "native"}'
 
     # Admin
     - name: WEBUI_ADMIN_EMAIL
@@ -393,7 +395,7 @@ open-webui:
     - name: RAG_EMBEDDING_ENGINE
       value: "openai"
     - name: CHUNK_SIZE
-      value: "440"
+      value: "500"
     - name: CHUNK_OVERLAP
       value: "100"
     - name: RAG_TEXT_SPLITTER
@@ -438,7 +440,7 @@ open-webui:
     - name: ENABLE_API_KEYS_ENDPOINT_RESTRICTIONS
       value: "True"
     - name: API_KEYS_ALLOWED_ENDPOINTS
-      value: "/api/v1/retrieval/,/api/v1/auths/,/api/v1/models,/api/models,/api/v1/models/base,/api/models/base,/api/chat/completions,/api/v1/chat/completions,/health"
+      value: "/api/v1/retrieval/,/api/v1/auths/,/api/v1/models,/api/models,/api/v1/models/base,/api/models/base,/api/chat/completions,/api/v1/chat/completions,/health,/api/v1/knowledge,/api/v1/files"
 
     # Disable direct connections (do not allow users to connect to new servers)
     - name: ENABLE_DIRECT_CONNECTIONS
