@@ -9,6 +9,10 @@ See [keep a changelog] for information about writing changes to this log.
 =======
 ## [Unreleased]
 
+* -
+
+## [0.5.1-rc.0] - 2026-08-12
+
 ### Changed
 
 * Upgraded open-webui to 0.9.6
