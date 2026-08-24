@@ -11,7 +11,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 * -
 
-## [0.5.1-rc.0] - 2026-08-12
+## [0.5.1] - 2026-08-24
 
 ### Changed
 
