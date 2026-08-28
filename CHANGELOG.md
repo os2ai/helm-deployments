@@ -16,6 +16,8 @@ See [keep a changelog] for information about writing changes to this log.
   Allows for openwebui to display token usage in it's analytics UI.
 * Disable grafana ingress by default
   kube-prometheus-stack 73.2.2 uses a public known admin password that requires immediate change as not to expose the grafana service virtually unprotected.
+* Disable open-webui OTEL Metrics
+  The same information is found in the ingress/service logs and avoids a cardinality explosion in the end exhausting the disk space.
 
 ## [0.6.0-rc.1]
 
