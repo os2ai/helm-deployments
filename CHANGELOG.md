@@ -18,6 +18,8 @@ See [keep a changelog] for information about writing changes to this log.
   kube-prometheus-stack 73.2.2 uses a public known admin password that requires immediate change as not to expose the grafana service virtually unprotected.
 * Disable open-webui OTEL Metrics
   The same information is found in the ingress/service logs and avoids a cardinality explosion in the end exhausting the disk space.
+* Designate a dedicated PVC to WAL storage.
+  Backups should no longer be able to exhausts the postgress cluster pods of disk space, preventing db crashes and therefore openwebui crashes due to unavailable postgress db.
 
 ## [0.6.0-rc.1]
 

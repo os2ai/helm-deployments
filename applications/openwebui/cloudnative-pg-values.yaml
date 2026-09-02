@@ -207,8 +207,8 @@ cloudnative-pg:
       storageClass: ""
 
     walStorage:
-      enabled: false
-      size: 1Gi
+      enabled: true
+      size: 2Gi
       storageClass: ""
 
     # -- The UID of the postgres user inside the image, defaults to 26
