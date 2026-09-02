@@ -340,7 +340,7 @@ open-webui:
     - name: ENABLE_OTEL
       value: "True"
     - name: ENABLE_OTEL_METRICS
-      value: "True"
+      value: "False"
     - name: ENABLE_OTEL_TRACES
       value: "True"
     - name: ENABLE_OTEL_LOGS
