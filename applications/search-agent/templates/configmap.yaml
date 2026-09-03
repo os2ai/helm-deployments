@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: search-agent-env
+  namespace: {{ .Release.Namespace }}
+data:
+  SEARCH_AGENT_LLM_MODEL: {{ .Values.env.llmModel | quote }}
+  SEARCH_AGENT_LLM_BASE_URL: {{ .Values.env.llmBaseUrl | quote }}
+  SEARCH_AGENT_LLM_TIMEOUT: {{ .Values.env.llmTimeout | quote }}
+
+  SEARCH_AGENT_SEARXNG_URL: {{ .Values.env.searxngUrl | quote }}
+  SEARCH_AGENT_SEARXNG_TIMEOUT: {{ .Values.env.searxngTimeout | quote }}
+
+  SEARCH_AGENT_DATETIME_TIMEZONE: {{ .Values.env.datetimeTimezone | quote }}
+  SEARCH_AGENT_DATETIME_FORMAT: {{ .Values.env.datetimeFormat | quote }}
+  SEARCH_AGENT_MCP_ALLOWED_HOSTS: {{ .Values.env.mcpAllowedHosts | quote }}
+
+  SEARCH_AGENT_SEARCH_QUERY_PLANNER_PROMPT: {{ .Values.env.searchQueryPlannerPrompt | quote }}
+  SEARCH_AGENT_SEARCH_ANALYZE_SYNTHESIZE_PROMPT: {{ .Values.env.searchAnalyzeSynthesizePrompt | quote }}
+  SEARCH_AGENT_SEARCH_PIPELINE_TIMEOUT: {{ .Values.env.searchPipelineTimeout | quote }}
+  SEARCH_AGENT_SEARCH_SKIP_PLANNER_FOR_SIMPLE_QUERIES: {{ .Values.env.searchSkipPlannerForSimpleQueries | quote }}
+  SEARCH_AGENT_SEARCH_MAX_QUERIES: {{ .Values.env.searchMaxQueries | quote }}
+  SEARCH_AGENT_SEARCH_MAX_RESULTS: {{ .Values.env.searchMaxResults | quote }}
+  SEARCH_AGENT_SEARCH_SIMPLE_QUERY_MAX_WORDS: {{ .Values.env.searchSimpleQueryMaxWords | quote }}
+  SEARCH_AGENT_SEARCH_SIMPLE_QUERY_MAX_QUESTIONS: {{ .Values.env.searchSimpleQueryMaxQuestions | quote }}
+  SEARCH_AGENT_SEARCH_FETCH_PAGE_CONTENT: {{ .Values.env.searchFetchPageContent | quote }}
+  SEARCH_AGENT_SEARCH_FETCH_MAX_PAGES: {{ .Values.env.searchFetchMaxPages | quote }}
+  SEARCH_AGENT_SEARCH_FETCH_TIMEOUT: {{ .Values.env.searchFetchTimeout | quote }}
+  SEARCH_AGENT_SEARCH_FETCH_MAX_CHARS: {{ .Values.env.searchFetchMaxChars | quote }}
+  SEARCH_AGENT_SEARCH_FETCH_MAX_BYTES: {{ .Values.env.searchFetchMaxBytes | quote }}
+
+  SEARCH_AGENT_CACHE_BACKEND: {{ .Values.env.cacheBackend | quote }}
+  SEARCH_AGENT_CACHE_REDIS_URL: {{ .Values.env.cacheRedisUrl | quote }}
+  SEARCH_AGENT_CACHE_FETCH_TTL: {{ .Values.env.cacheFetchTtl | quote }}
+  SEARCH_AGENT_CACHE_FETCH_NEGATIVE_TTL: {{ .Values.env.cacheFetchNegativeTtl | quote }}
+  SEARCH_AGENT_CACHE_SEARXNG_TTL: {{ .Values.env.cacheSearxngTtl | quote }}
+  SEARCH_AGENT_CACHE_PLANNER_TTL: {{ .Values.env.cachePlannerTtl | quote }}
+
+  SEARCH_AGENT_DEBUG: {{ .Values.env.debug | quote }}

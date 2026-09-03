@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: search-agent
+  namespace: argo-cd
+spec:
+  destinations:
+  - name: in-cluster
+    namespace: search-agent
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: false
+  sourceRepos:
+  - https://github.com/ai-platform-infrastructure/open-webui-k8s.git # git repository
