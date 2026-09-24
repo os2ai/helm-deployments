@@ -6,6 +6,43 @@ vllm:
 
     runtimeClassName: ""
     modelSpec:
+      - name: qwen3-coder
+        description: "Eksperimentel model for Qwen3-coder"
+        repository: vllm/vllm-openai
+        tag: v0.29.0
+
+        modelURL: Qwen/Qwen3-Coder-30B-A3B-Instruct
+
+        replicaCount: 1
+
+        requestCPU: 7
+        requestMemory: 56Gi
+        requestGPU: 1
+
+        pvcStorage: 200Gi
+        vllmConfig:
+          extraArgs: [
+            "--enable-auto-tool-choice",
+            "--tool-call-parser", "qwen3_coder",
+            "--kv-cache-dtype", "fp8",
+          ]
+
+        hf_token:
+          secretName: "hf-secret"
+          secretKey: "TOKEN"
+
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: nvidia.com/vgpu.present
+              operator: "In"
+              values:
+                - "true"
+            - key: nvidia.com/gpu.product
+              operator: "In"
+              values:
+                # Send this to the large GPU node
+                - GRID-A100D-80C
+
       - name: "mistral"
         repository: "vllm/vllm-openai"
         tag: "v0.12.0"

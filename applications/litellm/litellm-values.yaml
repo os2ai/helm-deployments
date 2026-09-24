@@ -91,6 +91,13 @@ litellm:
   proxy_config:
     model_list:
 
+      - model_name: "OS2ai-coder (Eksperimentel)"
+        description: "Eksperimentel model for OS2ai-coder"
+        litellm_params:
+          model: openai/Qwen/Qwen3-Coder-30B-A3B-Instruct
+          api_key: os.environ/CA_VLLM_LOCAL_API_KEY
+          api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
+
       - model_name: OS2ai-default
         litellm_params:
           model: openai/mistralai/Mistral-Small-3.2-24B-Instruct-2506
