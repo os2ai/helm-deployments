@@ -96,8 +96,7 @@ litellm:
 #          api_base: https://itkai-caiaa-ai-services.services.ai.azure.com/
 #          api_key: os.environ/CA_AZURE_GTP_4O_API_KEY
 #          api_version: "2024-10-21"
-      - model_name: "OS2ai-MoE (Eksperimentel)"
-        description: "Eksperimentel model for OS2ai-MoE"
+      - model_name: "google/gemma-4-26B-A4B-it"
         litellm_params:
           model: openai/google/gemma-4-26B-A4B-it
           api_key: os.environ/CA_VLLM_LOCAL_API_KEY
