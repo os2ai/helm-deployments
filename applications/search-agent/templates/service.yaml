@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: search-agent
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: search-agent
+    app.kubernetes.io/instance: search-agent
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: search-agent
+    app.kubernetes.io/instance: search-agent
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP

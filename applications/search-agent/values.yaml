@@ -1,0 +1,80 @@
+image:
+  repository: ghcr.io/aarhusai/search-agent
+  tag: 0.0.5
+  pullPolicy: "IfNotPresent"
+
+replicaCount: 1
+
+service:
+  port: 8001
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 1500m
+    memory: 2Gi
+
+redis:
+  image: redis:7.4.2-alpine3.21
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+config:
+  env:
+    # Current providers: searxng or staan
+    SEARCH_AGENT_SEARCH_PROVIDER: "staan"
+
+    SEARCH_AGENT_LLM_MODEL: "OS2ai-default"
+    SEARCH_AGENT_LLM_BASE_URL: "http://litellm.litellm.svc.cluster.local:4000/v1"
+    SEARCH_AGENT_LLM_TIMEOUT: "60"
+
+    SEARCH_AGENT_SEARXNG_URL: "http://searxng.searxng.svc.cluster.local:8080"
+    SEARCH_AGENT_SEARXNG_TIMEOUT: "15"
+
+    SEARCH_AGENT_DATETIME_TIMEZONE: "Europe/Copenhagen"
+    SEARCH_AGENT_DATETIME_FORMAT: "%A, %B %-d, %Y, %H:%M %Z"
+    SEARCH_AGENT_MCP_ALLOWED_HOSTS: '["search-agent.search-agent.svc.cluster.local:8001","search-agent:8001","localhost:8001"]'
+
+    # Default used when empty.
+    SEARCH_AGENT_SEARCH_QUERY_PLANNER_PROMPT: ""
+    SEARCH_AGENT_SEARCH_ANALYZE_SYNTHESIZE_PROMPT: ""
+
+    SEARCH_AGENT_SEARCH_PIPELINE_TIMEOUT: "90"
+    SEARCH_AGENT_SEARCH_SKIP_PLANNER_FOR_SIMPLE_QUERIES: "true"
+    SEARCH_AGENT_SEARCH_MAX_QUERIES: "3"
+    SEARCH_AGENT_SEARCH_MAX_RESULTS: "6"
+    SEARCH_AGENT_SEARCH_SIMPLE_QUERY_MAX_WORDS: "15"
+    SEARCH_AGENT_SEARCH_SIMPLE_QUERY_MAX_QUESTIONS: "1"
+    SEARCH_AGENT_SEARCH_FETCH_PAGE_CONTENT: "true"
+    SEARCH_AGENT_SEARCH_FETCH_TIMEOUT: "10"
+    SEARCH_AGENT_SEARCH_FETCH_MAX_CHARS: "5"
+    SEARCH_AGENT_SEARCH_FETCH_MAX_BYTES: "5000"
+    SEARCH_AGENT_SEARCH_FETCH_MAX_PAGES: "2000000"
+
+    SEARCH_AGENT_CACHE_BACKEND: "redis"
+    SEARCH_AGENT_CACHE_REDIS_URL: "redis://redis:6379/0"
+    SEARCH_AGENT_CACHE_FETCH_TTL: "3600"
+    SEARCH_AGENT_CACHE_FETCH_NEGATIVE_TTL: "300"
+    SEARCH_AGENT_CACHE_SEARXNG_TTL: "300"
+    SEARCH_AGENT_CACHE_PLANNER_TTL: "21600"
+
+    SEARCH_AGENT_STAAN_URL: "https://api.staan.ai"
+    SEARCH_AGENT_STAAN_API_KEY: "CHANGE_ME"
+    # No danish market exists and franch do not seam to be right.
+    SEARCH_AGENT_STAAN_MARKET: "en-us"
+    SEARCH_AGENT_STAAN_TIMEOUT: "10"
+    SEARCH_AGENT_STAAN_ENRICHMENT: "full_content"
+    SEARCH_AGENT_STAAN_MAX_SNIPPETS: "3"
+    SEARCH_AGENT_STAAN_MIN_SCORE: "0.1"
+    SEARCH_AGENT_STAAN_CONTENT_MAX_CHARS: "5000"
+    SEARCH_AGENT_STAAN_CONTENT_MAX_RESULTS: "5"
+    SEARCH_AGENT_STAAN_MAX_RESPONSE_BYTES: "10000000"
+
+    SEARCH_AGENT_DEBUG: "false"

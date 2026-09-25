@@ -8,6 +8,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+* Added agentic search tool and config to enabled it (See https://github.com/aarhusai/search-agent/pkgs/container/search-agent)
+* Updated open-webui to new patch version v0.9.6-7 (added search patch)
+
 ### Changed
 
 * Set ENABLE_VERSION_UPDATE_CHECK to false.
