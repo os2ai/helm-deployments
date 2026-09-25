@@ -90,6 +90,42 @@ vllm:
                 # Send this to the large GPU node
                 - GRID-A100D-80C
 
+      - name: gpt-oss-120b
+        repository: vllm/vllm-openai
+        tag: v0.20.1
+
+        modelURL: openai/gpt-oss-120b
+
+        replicaCount: 0
+
+        requestCPU: 7
+        requestMemory: 56Gi
+        requestGPU: 1
+
+        pvcStorage: 200Gi
+
+        vllmConfig:
+          extraArgs: [
+            --tool-call-parser, openai,
+            --reasoning-parser, openai_gptoss,
+            --enable-auto-tool-choice
+          ]
+
+        hf_token:
+          secretName: "hf-secret"
+          secretKey: "TOKEN"
+
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: nvidia.com/vgpu.present
+              operator: "In"
+              values:
+                - "true"
+            - key: nvidia.com/gpu.product
+              operator: "In"
+              values:
+                - GRID-A100D-80C
+
       - name: "embeddings"
         repository: "vllm/vllm-openai"
         tag: "v0.12.0"

@@ -111,6 +111,20 @@ litellm:
         guardrails:
           - message_trimming
 
+      - model_name: openai/gpt-oss-120b
+        litellm_params:
+          model: openai/openai/gpt-oss-120b
+          api_key: os.environ/CA_VLLM_LOCAL_API_KEY
+          api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
+          max_tokens: 131072
+          max_input_tokens: 131072
+          max_output_tokens: 131072
+        model_info:
+          mode: chat
+          max_tokens: 131072
+          max_input_tokens: 131072
+          max_output_tokens: 131072
+
     guardrails:
       - guardrail_name: "message_trimming"
         litellm_params:

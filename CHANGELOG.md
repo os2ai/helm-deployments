@@ -10,6 +10,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Added
 
+* Add openai/gpt-oss-120b model.
 * Add google/gemma-4-26B-A4B-it model.
 
 ### Changed
