@@ -105,6 +105,22 @@ litellm:
         guardrails:
           - message_trimming
 
+      # https://huggingface.co/openai/gpt-oss-120b
+      - model_name: openai/gpt-oss-120b
+        litellm_params:
+          model: openai/openai/gpt-oss-120b
+          api_key: os.environ/CA_VLLM_LOCAL_API_KEY
+          api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
+          max_tokens: 131072
+
+      # https://huggingface.co/google/gemma-4-26B-A4B-it
+      - model_name: google/gemma-4-26B-A4B-it
+        litellm_params:
+          model: openai/google/gemma-4-26B-A4B-it
+          api_key: os.environ/CA_VLLM_LOCAL_API_KEY
+          api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
+          max_tokens: 131072
+
     guardrails:
       - guardrail_name: "message_trimming"
         litellm_params:
