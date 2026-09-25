@@ -8,6 +8,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Added
+
+* Add google/gemma-4-26B-A4B-it model.
+
 ### Changed
 
 * Set ENABLE_VERSION_UPDATE_CHECK to false.

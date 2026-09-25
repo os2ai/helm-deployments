@@ -6,6 +6,47 @@ vllm:
 
     runtimeClassName: ""
     modelSpec:
+      - name: gemma-4-26b-a4b-it
+        repository: vllm/vllm-openai
+        tag: v0.23.0
+
+        modelURL: "google/gemma-4-26B-A4B-it"
+
+        replicaCount: 0
+
+        requestCPU: 7
+        requestMemory: 56Gi
+        requestGPU: 1
+
+        pvcStorage: 200Gi
+
+        vllmConfig:
+          maxModelLen: 131072
+          extraArgs: [
+            "--gpu-memory-utilization", "0.95",
+            "--async-scheduling",
+            "--enable-auto-tool-choice",
+            "--tool-call-parser", "gemma4",
+            "--reasoning-parser", "gemma4",
+            "--chat-template", "examples/tool_chat_template_gemma4.jinja"
+          ]
+
+        hf_token:
+          secretName: "hf-secret"
+          secretKey: "TOKEN"
+
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: nvidia.com/vgpu.present
+              operator: "In"
+              values:
+                - "true"
+            - key: nvidia.com/gpu.product
+              operator: "In"
+              values:
+                # Send this to the large GPU node
+                - GRID-A100D-80C
+
       - name: "mistral"
         repository: "vllm/vllm-openai"
         tag: "v0.12.0"
