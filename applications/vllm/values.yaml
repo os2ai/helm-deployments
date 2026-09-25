@@ -12,7 +12,7 @@ vllm:
 
         modelURL: "google/gemma-4-26B-A4B-it"
 
-        replicaCount: 1
+        replicaCount: 0
 
         requestCPU: 7
         requestMemory: 56Gi
