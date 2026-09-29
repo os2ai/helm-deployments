@@ -8,6 +8,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Changed
+
+* Updated open-webui to version 0.11.3 (recommend to set replica count to 1 before upgrade and restore after).
+  See https://github.com/open-webui/open-webui/releases#release-v0.11.3 a lot have changed since 0.9.6.
+
 ### Added
 
 * Add openai/gpt-oss-120b model.
@@ -26,14 +31,10 @@ See [keep a changelog] for information about writing changes to this log.
 * Designate a dedicated PVC to WAL storage.
   Backups should no longer be able to exhausts the postgress cluster pods of disk space, preventing db crashes and therefore openwebui crashes due to unavailable postgress db.
 
-## [0.6.0-rc.1]
+## [0.6.0] 2026-08-24
 
 ### Changed
 
-* Upgraded open-webui to 0.9.6
-  This release contains a new patch to fix token count doing embedding (https://github.com/AarhusAI/open-webui/pull/53)
-* Changed tool calling to native for better model tool support (will also be default in 0.10.x)
-* Updated chunk size to match embedding model - 500 tokens.
 * Updated trim message litellm guardrail to support tool call and minor bug fixes.
 
 ### Added
@@ -41,6 +42,15 @@ See [keep a changelog] for information about writing changes to this log.
 * Integration of OS2ai Adgangskomponent, providing authentication with
   Fælleskommunal Adgangsstyring (FKA). The OS2ai Adgangskomponent runs as a
   configured Keycloak-instance in the cluster.
+
+## [0.5.1] - 2026-08-24
+
+### Changed
+
+* Upgraded open-webui to 0.9.6
+  This release contains a new patch to fix token count doing embedding (https://github.com/AarhusAI/open-webui/pull/53)
+* Changed tool calling to native for better model tool support (will also be default in 0.10.x)
+* Updated chunk size to match embedding model - 500 tokens.
 
 ## [0.5.0] - 2026-07-01
 
@@ -107,6 +117,8 @@ See [keep a changelog] for information about writing changes to this log.
 * Disabled SSO in Open-WebUI.
 
 [Unreleased]: https://github.com/os2ai/documentation/compare/0.1.1...HEAD
+[0.5.0]: https://github.com/os2ai/documentation/compare/0.4.0...0.5.0
+[0.4.0]: https://github.com/os2ai/documentation/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/os2ai/documentation/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/os2ai/documentation/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/os2ai/documentation/compare/0.1.0...0.1.1
