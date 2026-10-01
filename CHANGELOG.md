@@ -8,6 +8,13 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Security
+
+* backup-bucket-transformer Roles trimmed to least privilege (litellm,
+  openwebui, adgangskomponent): read (get, watch) on the source OBC secret,
+  write (create, update, patch) on the transformed secret — previously
+  verbs ["*"] on both. Fixes #60.
+
 ### Added
 
 * ...
