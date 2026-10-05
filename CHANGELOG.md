@@ -18,6 +18,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 # Fixed
 
+* sealed-secrets: the wrapper Service's instance selector now follows
+  the Helm release name instead of hardcoding `sealed-secrets` — under
+  any other release name the Service (which bears kubeseal's default
+  controller name) selected zero pods, making kubeseal hang against an
+  endpointless backend. Fixes #71.
 * Cleaned up some comments and empty fields not in use in helm templating
 
 ## [0.7.0-rc.0]
