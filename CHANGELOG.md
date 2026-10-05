@@ -8,6 +8,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 ## [Unreleased]
 
+### Changed
+
+* Updated open-webui to version 0.11.3 (recommend to set replica count to 1 before upgrade and restore after).
+  See https://github.com/open-webui/open-webui/releases#release-v0.11.3 a lot have changed since 0.9.6.
+
 ### Added
 
 * ...
@@ -129,6 +134,8 @@ See [keep a changelog] for information about writing changes to this log.
 * Disabled SSO in Open-WebUI.
 
 [Unreleased]: https://github.com/os2ai/documentation/compare/0.1.1...HEAD
+[0.5.0]: https://github.com/os2ai/documentation/compare/0.4.0...0.5.0
+[0.4.0]: https://github.com/os2ai/documentation/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/os2ai/documentation/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/os2ai/documentation/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/os2ai/documentation/compare/0.1.0...0.1.1
