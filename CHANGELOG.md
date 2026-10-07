@@ -21,7 +21,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 # Changed
 
-* ...
+* Removed support for Authentik service. The service is not in use outside of
+  AarhusAI, as far as we know, and is an alternative to adgangskomponent, which
+  we now primarily support. Unless custom work has been done on Authentik
+  integration in a cluster, this should have no impact.
 
 # Fixed
 

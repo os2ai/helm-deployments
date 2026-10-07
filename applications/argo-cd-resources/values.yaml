@@ -129,15 +129,6 @@ apps:
     valueFiles:
       - values.yaml
 
-  - name: authentik
-    project: authentik
-    namespace: authentik
-    automated: false
-    valueFiles:
-      - authentik-values.yaml
-      - cloudnative-pg-values.yaml
-      - redis-replication-values.yaml
-
   - name: keycloak-operator
     project: keycloak-operator
     namespace: keycloak-operator
