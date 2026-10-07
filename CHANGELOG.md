@@ -17,6 +17,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Added
 
+* argo-cd-resources: optional per-app `ignoreDifferences` passthrough in
+  the Application template, for apps whose live state is legitimately
+  mutated after sync (operator-managed fields, HPA-managed replicas).
+  Fixes #70.
 * ...
 
 # Changed
