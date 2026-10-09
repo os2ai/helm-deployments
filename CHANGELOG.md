@@ -14,6 +14,10 @@ See [keep a changelog] for information about writing changes to this log.
   openwebui, adgangskomponent): read (get, watch) on the source OBC secret,
   write (create, update, patch) on the transformed secret — previously
   verbs ["*"] on both. Fixes #60.
+* Bumped litellm to `main-v1.84.0-stable` — the previous pin fell under
+  GHSA-4xpc-pv4p-pm3w (critical, unauthenticated auth bypass via the
+  Host header); fixed in 1.84.0, no configuration changes required.
+  Fixes #75.
 
 ### Added
 
