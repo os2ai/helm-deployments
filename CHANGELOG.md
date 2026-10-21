@@ -16,11 +16,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 * ...
 
-# Changed
+### Changed
 
 * ...
 
-# Fixed
+### Fixed
 
 * ...
 
@@ -33,7 +33,7 @@ See [keep a changelog] for information about writing changes to this log.
   write (create, update, patch) on the transformed secret — previously
   verbs ["*"] on both. Fixes #60.
 
-# Changed
+### Changed
 
 * Updated open-webui to version 0.11.3 (recommend to set replica count to 1 before upgrade and restore after).
   See https://github.com/open-webui/open-webui/releases#release-v0.11.3 a lot have changed since 0.9.6.
@@ -42,7 +42,7 @@ See [keep a changelog] for information about writing changes to this log.
   we now primarily support. Unless custom work has been done on Authentik
   integration in a cluster, this should have no impact.
 
-# Fixed
+### Fixed
 
 * Cleaned up some comments and empty fields not in use in helm templating
 
