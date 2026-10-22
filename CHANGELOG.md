@@ -23,6 +23,7 @@ See [keep a changelog] for information about writing changes to this log.
 ### Fixed
 
 * Cleaned up some comments and empty fields not in use in helm templating
+* Enabled separate walStorage PVC on Adgangskomponent and litellm. https://github.com/os2ai/helm-deployments/pull/83
 
 ## [0.8.0-rc.0] 2026-10-21
 
