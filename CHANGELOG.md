@@ -21,6 +21,11 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Added
 
+* search-agent: the Secret the API-key environment variables are read from is
+  now set via `secretName` in values.yaml (default `search-agent-secret`).
+  Both the deployment's secretKeyRef entries and the bundled SealedSecret
+  template follow it. Renders identically to before with the default value.
+
 * argo-cd-resources: optional per-app `ignoreDifferences` passthrough in
   the Application template, for apps whose live state is legitimately
   mutated after sync (operator-managed fields, HPA-managed replicas).

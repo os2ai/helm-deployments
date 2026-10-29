@@ -35,12 +35,12 @@ spec:
             - name: SEARCH_AGENT_STAAN_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: search-agent-secret
+                  name: {{ .Values.secretName | default "search-agent-secret" }}
                   key: SEARCH_AGENT_STAAN_API_KEY
             - name: SEARCH_AGENT_LLM_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: search-agent-secret
+                  name: {{ .Values.secretName | default "search-agent-secret" }}
                   key: SEARCH_AGENT_LLM_API_KEY
           envFrom:
             - configMapRef:
