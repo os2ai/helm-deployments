@@ -10,7 +10,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Security
 
-* ...
+* Added SECURITY.md pointing to the OS2 community security policy for
+  vulnerability reporting under the EU Cyber Resilience Act
+  (os2ai/Feedback#48).
 
 ### Added
 
@@ -18,7 +20,6 @@ See [keep a changelog] for information about writing changes to this log.
   the Application template, for apps whose live state is legitimately
   mutated after sync (operator-managed fields, HPA-managed replicas).
   Fixes #70.
-* ...
 
 ### Changed
 
