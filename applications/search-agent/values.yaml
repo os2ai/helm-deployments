@@ -29,7 +29,7 @@ redis:
 config:
   env:
     # Current providers: searxng or staan
-    SEARCH_AGENT_SEARCH_PROVIDER: "staan"
+    SEARCH_AGENT_SEARCH_PROVIDER: "searxng"
 
     SEARCH_AGENT_LLM_MODEL: "OS2ai-default"
     SEARCH_AGENT_LLM_BASE_URL: "http://litellm.litellm.svc.cluster.local:4000/v1"
