@@ -29,7 +29,8 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Changed
 
-* ...
+* openwebui: bumped the Open WebUI image from `v0.11.3-4` to `v0.13.3-1`
+  (upstream 0.13.3 with the OS2ai patch set rebased).
 
 ### Fixed
 
