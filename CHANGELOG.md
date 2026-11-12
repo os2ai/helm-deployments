@@ -24,6 +24,11 @@ See [keep a changelog] for information about writing changes to this log.
 ### Changed
 
 * Enabled backup of Adgangskomponent Postgres database per default.
+* openwebui: `ENABLE_PROMPT_SUGGESTIONS=False` is now part of the base
+  values.yaml, so every site ships with prompt suggestions disabled out of
+  the box. The variable is honoured by the os2ai Open WebUI fork (the patch
+  from AarhusAI/open-webui#56, carried forward on the fork's patch set); it
+  is inert on vanilla images. Fixes #53.
 
 ### Fixed
 

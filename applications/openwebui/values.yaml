@@ -492,6 +492,11 @@ open-webui:
     - name: ENABLE_FOLLOW_UP_GENERATION
       value: "False"
 
+    # Prompt suggestions. Requires the os2ai fork of Open WebUI, which
+    # honours this variable; on vanilla images it is inert.
+    - name: ENABLE_PROMPT_SUGGESTIONS
+      value: "False"
+
     # Tools configuration
     - name: TOOL_SERVER_CONNECTIONS
       value: |-
