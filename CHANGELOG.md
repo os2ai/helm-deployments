@@ -24,6 +24,13 @@ See [keep a changelog] for information about writing changes to this log.
 ### Changed
 
 * Enabled backup of Adgangskomponent Postgres database per default.
+* litellm: the Mistral base model is served under its origin system name
+  `mistralai/Mistral-Small-3.2-24B-Instruct-2506` instead of the alias
+  `OS2ai-default`. Base models should not carry marketing names -
+  aliasing is the builder/admin's responsibility in Open WebUI.
+  search-agent's `SEARCH_AGENT_LLM_MODEL` follows. Sites migrating from a
+  release where the alias was in use can re-add it as a second model_list
+  entry pointing at the same deployment. Fixes #59.
 
 ### Fixed
 
