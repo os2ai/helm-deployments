@@ -24,6 +24,10 @@ See [keep a changelog] for information about writing changes to this log.
 ### Changed
 
 * Enabled backup of Adgangskomponent Postgres database per default.
+* openwebui: documented in values.yaml how to disable OAuth login -
+  `ENABLE_OAUTH=False` is the master switch (hides the provider login
+  button and 404s the OAuth endpoints); `ENABLE_OAUTH_SIGNUP` only governs
+  account auto-creation and does not affect the login button. Addresses #55.
 
 ### Fixed
 
