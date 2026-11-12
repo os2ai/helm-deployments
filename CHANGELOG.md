@@ -10,6 +10,9 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Security
 
+* Added SECURITY.md pointing to the OS2 community security policy for
+  vulnerability reporting under the EU Cyber Resilience Act
+  (os2ai/Feedback#48).
 * backup-bucket-transformer Roles trimmed to least privilege (litellm,
   openwebui, adgangskomponent): read (get, watch) on the source OBC secret,
   write (create, update, patch) on the transformed secret — previously
