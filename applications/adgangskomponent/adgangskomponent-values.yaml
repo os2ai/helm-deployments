@@ -16,7 +16,7 @@ adgangskomponent:
       # We probably need a better approach than simple templating.
       # An operator creates secrets on demand perhaps?
       secret: <MUST REGEN>
-      secretGenerationTime: UNIX TIME SECONDS>
+      secretGenerationTime: <UNIX TIME SECONDS>
       redirectUris:
         - https://ai.<FQDN>/*
       postLogoutRedirectUris: https://ai.<FQDN>/*
