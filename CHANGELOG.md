@@ -24,7 +24,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 * ...
 
-## [0.8.0-rc.0] 2026-10-21
+## [0.8.0] 2026-11-13
 
 ### Security
 
