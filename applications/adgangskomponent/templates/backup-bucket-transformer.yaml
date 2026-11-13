@@ -29,8 +29,12 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
-    resourceNames: ["{{ .Release.Name }}-backup-bucket", "{{ .Release.Name }}-backup-bucket-transformed"]
-    verbs: ["*"]
+    resourceNames: ["{{ .Release.Name }}-backup-bucket"]
+    verbs: ["get", "watch"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["{{ .Release.Name }}-backup-bucket-transformed"]
+    verbs: ["create", "update", "patch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

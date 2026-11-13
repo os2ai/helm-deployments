@@ -90,12 +90,6 @@ litellm:
   #  Reference: https://docs.litellm.ai/docs/proxy/configs
   proxy_config:
     model_list:
-#      - model_name: gpt-4o
-#        litellm_params:
-#          model: azure_ai/gpt-4o
-#          api_base: https://itkai-caiaa-ai-services.services.ai.azure.com/
-#          api_key: os.environ/CA_AZURE_GTP_4O_API_KEY
-#          api_version: "2024-10-21"
       - model_name: "google/gemma-4-26B-A4B-it"
         litellm_params:
           model: openai/google/gemma-4-26B-A4B-it
