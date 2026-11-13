@@ -8,7 +8,7 @@ litellm:
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "main-latest"
-    tag: "main-stable"
+    tag: "1.109.1"
 
   imagePullSecrets: []
   nameOverride: "litellm"
