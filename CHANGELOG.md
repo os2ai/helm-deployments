@@ -36,6 +36,10 @@ See [keep a changelog] for information about writing changes to this log.
   argo-cd's bundled redis `8.2.2-alpine` -> `8.2.11-alpine` and its
   redis_exporter `v1.80.1` -> `v1.80.2`, and the vllm runtime image for
   gpt-oss-120b `v0.20.1` -> `v0.20.2`. No configuration changes.
+* litellm: the image tag is pinned to `1.109.1` instead of the floating
+  `main-stable` tag, which points at exactly this build (same digest).
+  Content is unchanged; the pin makes what gets deployed reproducible
+  and turns any drift into a visible version bump.
 
 ### Fixed
 
