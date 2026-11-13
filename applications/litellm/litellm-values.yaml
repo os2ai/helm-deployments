@@ -96,7 +96,12 @@ litellm:
           api_key: os.environ/CA_VLLM_LOCAL_API_KEY
           api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
 
-      - model_name: OS2ai-default
+      # Base models are exposed under their origin system name; abstracting
+      # them (aliases such as the former "OS2ai-default") is the job of the
+      # individual builder or admin in Open WebUI, not the platform default.
+      # Sites migrating from a release where the alias existed can keep
+      # serving it with a duplicate entry pointing at the same deployment.
+      - model_name: mistralai/Mistral-Small-3.2-24B-Instruct-2506
         litellm_params:
           model: openai/mistralai/Mistral-Small-3.2-24B-Instruct-2506
           api_key: os.environ/CA_VLLM_LOCAL_API_KEY
