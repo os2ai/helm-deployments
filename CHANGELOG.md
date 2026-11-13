@@ -28,6 +28,9 @@ See [keep a changelog] for information about writing changes to this log.
 ### Changed
 
 * Enabled backup of Adgangskomponent Postgres database per default.
+* search-agent: default search provider switched from `staan` to `searxng`,
+  so an out-of-the-box install uses the self-hosted SearXNG instead of the
+  commercial Staan.ai API. Fixes #89.
 
 ### Fixed
 
