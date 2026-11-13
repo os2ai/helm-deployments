@@ -23,7 +23,7 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Changed
 
-* ...
+* Enabled backup of Adgangskomponent Postgres database per default.
 
 ### Fixed
 
