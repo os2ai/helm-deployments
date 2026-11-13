@@ -351,6 +351,13 @@ open-webui:
       value: "True"
 
     # OIDC
+    # To disable OAuth login entirely, set ENABLE_OAUTH to "False" in the
+    # site's values. It is the master switch: the login button disappears
+    # and /oauth/<provider>/login|callback return 404. Leaving it at the
+    # default "True" (as here) only means the switch is armed - the button
+    # additionally requires OAUTH_CLIENT_ID / OPENID_PROVIDER_URL to be set.
+    # ENABLE_OAUTH_SIGNUP only controls auto-creation of accounts at first
+    # OAuth login; it does NOT hide the login button.
     - name: ENABLE_OAUTH_SIGNUP
       value: "True"
     - name: OAUTH_MERGE_ACCOUNTS_BY_EMAIL
