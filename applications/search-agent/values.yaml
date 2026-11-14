@@ -5,6 +5,11 @@ image:
 
 replicaCount: 1
 
+# Name of the Secret the API-key environment variables are read from via
+# secretKeyRef (see templates/deployment.yaml). The bundled
+# sealed-search-agent-secret.yaml template produces a Secret of this name.
+secretName: search-agent-secret
+
 service:
   port: 8001
 
