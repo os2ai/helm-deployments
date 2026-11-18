@@ -38,6 +38,17 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Added
 
+* litellm: template-time guard rejecting non-ASCII characters (e.g. æ/ø/å)
+  in model names. LiteLLM >= 1.109 echoes `model_name`,
+  `litellm_params.model` and `model_info.id` back in `x-litellm-*` response
+  headers; Open WebUI forwards those headers and dies with a latin-1
+  `UnicodeEncodeError` on non-ASCII bytes, so every chat with such a model
+  fails with a generic "Server Connection Error" while LiteLLM itself logs
+  200s. There is no LiteLLM setting to turn the headers off, so the chart
+  now fails to template instead, pointing at the offending value and at the
+  fix (ASCII `model_name`, pretty display name in Open WebUI under
+  Admin -> Models). Sites currently using non-ASCII model names must rename
+  them to ASCII before upgrading. See #91.
 * argo-cd-resources: optional per-app `ignoreDifferences` passthrough in
   the Application template, for apps whose live state is legitimately
   mutated after sync (operator-managed fields, HPA-managed replicas).
