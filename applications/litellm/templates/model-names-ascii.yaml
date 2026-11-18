@@ -1,0 +1,61 @@
+{{- /*
+Guardrail: every LiteLLM model name must be pure ASCII.
+
+Reason (os2ai/helm-deployments#91): LiteLLM >= 1.109 echoes parts of the
+model configuration back to the client in `x-litellm-*` response headers
+(`x-litellm-model-group` sends `model_name`, `x-litellm-model-name` sends
+`litellm_params.model`, `x-litellm-model-id` sends `model_info.id`). HTTP
+response headers are latin-1 encoded, and Open WebUI forwards these headers
+to the browser; a name containing non-ASCII characters such as the Danish
+æ/ø/å then kills every chat on that model with an opaque
+"Open WebUI: Server Connection Error":
+
+    UnicodeEncodeError: 'latin-1' codec can't encode character '\udcf8'
+
+LiteLLM offers no setting to disable the headers, and the opt-out switches
+under discussion upstream (BerriAI/litellm#49598, BerriAI/litellm#51190)
+were not merged as of the 1.109.1 bump. Fail at template time instead, so
+a site with e.g. "HjørringAI" in its model_list cannot even deploy.
+
+TODO(upstream): remove this gate once a structural fix lands on either
+side of the wire:
+  - LiteLLM can omit or safely encode the x-litellm-* response headers
+    (opt-out switches BerriAI/litellm#49598, #51190 still open at the
+    1.109.1 bump), or
+  - Open WebUI stops forwarding header values it cannot encode instead of
+    crashing (same latin-1 class as open-webui#14375/#16142, fixed there
+    for other paths; not yet for the /v1 proxy passthrough). Until
+    upstream accepts it, the sanitizing patch could ride the os2ai
+    open-webui fork's patch pipeline.
+Until then keep model_name ASCII in the LiteLLM model_list and set the
+pretty æ/ø/å display name in Open WebUI under Admin -> Models instead.
+
+The check below allows printable ASCII (0x20-0x7E) and rejects everything
+else, including control characters, which are equally invalid in header
+values. It renders nothing itself; it only fails the template.
+*/ -}}
+{{- $bad := list -}}
+{{- $nonAscii := "[^\\x20-\\x7E]" -}}
+{{- range $i, $entry := .Values.litellm.proxy_config.model_list -}}
+  {{- if $entry -}}
+    {{- $checked := dict -}}
+    {{- $_ := set $checked "model_name" $entry.model_name -}}
+    {{- if $entry.litellm_params -}}
+      {{- $_ := set $checked "litellm_params.model" $entry.litellm_params.model -}}
+    {{- end -}}
+    {{- if $entry.model_info -}}
+      {{- $_ := set $checked "model_info.id" $entry.model_info.id -}}
+    {{- end -}}
+    {{- range $field, $value := $checked -}}
+      {{- if $value -}}
+        {{- $name := printf "%v" $value -}}
+        {{- if regexMatch $nonAscii $name -}}
+          {{- $bad = append $bad (printf "model_list[%d] %s: %s" $i $field $name) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $bad -}}
+  {{- fail (printf "litellm: model configuration values rejected, they must be pure ASCII because LiteLLM >= 1.109 echoes them in x-litellm-* response headers and Open WebUI crashes on non-ASCII header values (os2ai/helm-deployments#91). Offending values:\n  %s\nKeep model_name ASCII here (e.g. \"HjoerringAI\") and set the æ/ø/å display name in Open WebUI under Admin -> Models instead." (join "\n  " $bad)) -}}
+{{- end -}}
