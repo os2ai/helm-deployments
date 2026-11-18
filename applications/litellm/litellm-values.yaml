@@ -88,6 +88,18 @@ litellm:
   # The elements within proxy_config are rendered as config.yaml for the proxy
   #  Examples: https://github.com/BerriAI/litellm/tree/main/litellm/proxy/example_config_yaml
   #  Reference: https://docs.litellm.ai/docs/proxy/configs
+  #
+  #  WARNING: model names (model_name, litellm_params.model, model_info.id)
+  #  MUST be pure ASCII - no æ/ø/å or other non-ASCII characters. LiteLLM
+  #  >= 1.109 echoes them back in x-litellm-* response headers; Open WebUI
+  #  forwards those headers to the browser and crashes on non-ASCII bytes
+  #  (UnicodeEncodeError: 'latin-1' codec), which users see as a generic
+  #  "Server Connection Error" on every chat with that model. There is no
+  #  LiteLLM setting to disable the headers (see BerriAI/litellm#49598).
+  #  Use an ASCII name here (e.g. "HjoerringAI") and set the pretty æ/ø/å
+  #  display name in Open WebUI under Admin -> Models instead.
+  #  Enforced at template time by templates/model-names-ascii.yaml.
+  #  See https://github.com/os2ai/helm-deployments/issues/91
   proxy_config:
     model_list:
       - model_name: "google/gemma-4-26B-A4B-it"
