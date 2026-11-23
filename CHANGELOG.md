@@ -38,6 +38,14 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Changed
 
+* keycloak-operator: the Keycloak server image is pinned to `26.8.2` via
+  `keycloakImage.tag` (previously empty, falling back to the chart's bundled
+  default `26.5.1` through `RELATED_IMAGE_KEYCLOAK`). This is a
+  minor-version bump, so the operator's `Auto` update strategy performs a
+  recreate update with a brief outage. Deployments that call the Admin REST
+  API with their own OIDC client must also assign the new `kc-admin-api`
+  client scope introduced by the 26.8.2 audience check, and the
+  Adgangskomponent realm is re-imported as 26.8.2.
 * Enabled backup of Adgangskomponent Postgres database per default.
 * search-agent: default search provider switched from `staan` to `searxng`,
   so an out-of-the-box install uses the self-hosted SearXNG instead of the

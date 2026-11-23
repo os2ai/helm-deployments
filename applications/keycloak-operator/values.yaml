@@ -14,7 +14,7 @@ keycloak-operator:
   imagePullSecrets: []
   keycloakImage:
     repository: quay.io/keycloak/keycloak
-    tag: ""
+    tag: "26.8.2"
   nameOverride: ""
   nodeSelector: {}
   podAnnotations: {}
