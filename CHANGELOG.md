@@ -38,6 +38,10 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Changed
 
+* litellm: patch bump `1.109.1` -> `1.109.3` (image
+  `ghcr.io/berriai/litellm-database:1.109.3`, digest verified present in
+  the registry). Stays within the 1.109 line the 0.8.x releases pinned,
+  picks up the two upstream patch fixes, no configuration changes.
 * Enabled backup of Adgangskomponent Postgres database per default.
 * search-agent: default search provider switched from `staan` to `searxng`,
   so an out-of-the-box install uses the self-hosted SearXNG instead of the
