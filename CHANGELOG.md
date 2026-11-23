@@ -38,9 +38,14 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Changed
 
-* keycloak-operator: the Keycloak server image is pinned to `26.8.2` via
+* keycloak-operator: the operator is bumped to
+  `1.0.20261114010305` (bundles Keycloak `26.8.2` as `appVersion`, adds
+  the `kc.operator.keycloak.image` env and an OIDCClient controller), and
+  the Keycloak server image is pinned to `26.8.2` via
   `keycloakImage.tag` (previously empty, falling back to the chart's bundled
-  default `26.5.1` through `RELATED_IMAGE_KEYCLOAK`). This is a
+  default `26.5.1` through `RELATED_IMAGE_KEYCLOAK`). The pin now matches
+  the bundled default but keeps version changes visible in git instead of
+  happening implicitly when the operator chart is bumped. This is a
   minor-version bump, so the operator's `Auto` update strategy performs a
   recreate update with a brief outage. Deployments that call the Admin REST
   API with their own OIDC client must also assign the new `kc-admin-api`
