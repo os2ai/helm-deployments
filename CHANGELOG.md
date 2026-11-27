@@ -24,6 +24,16 @@ See [keep a changelog] for information about writing changes to this log.
 
 * ...
 
+## [0.9.0-rc.0] 2026-11-27
+
+### Changed
+
+* openwebui: bumped the Open WebUI image from `v0.11.3-4` to `v0.13.3-1`
+  (upstream 0.13.3 with the OS2ai patch set rebased). Recommendation: set
+  `replicaCount` to 1 before upgrading and restore it afterwards.
+  See https://github.com/open-webui/open-webui/releases/tag/v0.13.3 and
+  os2ai/builder#3.
+
 ## [0.8.1] 2026-11-27
 
 ### Security
@@ -209,7 +219,8 @@ See [keep a changelog] for information about writing changes to this log.
 * Comment out TTS/STT in Open-WebUI as this is not part of the default stack.
 * Disabled SSO in Open-WebUI.
 
-[Unreleased]: https://github.com/os2ai/helm-deployments/compare/0.8.1...HEAD
+[Unreleased]: https://github.com/os2ai/helm-deployments/compare/0.9.0-rc.0...HEAD
+[0.9.0-rc.0]: https://github.com/os2ai/helm-deployments/compare/0.8.1...0.9.0-rc.0
 [0.8.1]: https://github.com/os2ai/helm-deployments/compare/0.8.0...0.8.1
 [0.8.0]: https://github.com/os2ai/helm-deployments/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/os2ai/helm-deployments/compare/0.6.0...0.7.0
