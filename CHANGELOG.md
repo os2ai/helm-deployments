@@ -10,6 +10,24 @@ See [keep a changelog] for information about writing changes to this log.
 
 ### Security
 
+* ...
+
+### Added
+
+* ...
+
+### Changed
+
+* ...
+
+### Fixed
+
+* ...
+
+## [0.8.1] 2026-11-27
+
+### Security
+
 * Added SECURITY.md pointing to the OS2 community security policy for
   vulnerability reporting under the EU Cyber Resilience Act
   (os2ai/Feedback#48).
