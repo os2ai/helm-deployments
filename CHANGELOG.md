@@ -16,13 +16,68 @@ See [keep a changelog] for information about writing changes to this log.
 
 * ...
 
-# Changed
+### Changed
 
 * ...
 
-# Fixed
+### Fixed
 
 * ...
+
+## [0.8.1] 2026-11-27
+
+### Security
+
+* Added SECURITY.md pointing to the OS2 community security policy for
+  vulnerability reporting under the EU Cyber Resilience Act
+  (os2ai/Feedback#48).
+* Bumped litellm to `main-v1.84.0-stable` and pinned the image to
+  `main-stable` — the previous 1.83.10 pin fell under GHSA-4xpc-pv4p-pm3w
+  (critical, unauthenticated auth bypass via the Host header); fixed in
+  1.84.0, no configuration changes required. Fixes #75.
+
+### Added
+
+* litellm: template-time guard rejecting non-ASCII characters (e.g. æ/ø/å)
+  in model names. LiteLLM >= 1.109 echoes `model_name`,
+  `litellm_params.model` and `model_info.id` back in `x-litellm-*` response
+  headers; Open WebUI forwards those headers and dies with a latin-1
+  `UnicodeEncodeError` on non-ASCII bytes, so every chat with such a model
+  fails with a generic "Server Connection Error" while LiteLLM itself logs
+  200s. There is no LiteLLM setting to turn the headers off, so the chart
+  now fails to template instead, pointing at the offending value and at the
+  fix (ASCII `model_name`, pretty display name in Open WebUI under
+  Admin -> Models). Sites currently using non-ASCII model names must rename
+  them to ASCII before upgrading. See #91.
+* argo-cd-resources: optional per-app `ignoreDifferences` passthrough in
+  the Application template, for apps whose live state is legitimately
+  mutated after sync (operator-managed fields, HPA-managed replicas).
+  Fixes #70.
+
+### Changed
+
+* Enabled backup of Adgangskomponent Postgres database per default.
+* search-agent: default search provider switched from `staan` to `searxng`,
+  so an out-of-the-box install uses the self-hosted SearXNG instead of the
+  commercial Staan.ai API. Fixes #89.
+* Patch-version bumps of the background services' images within the
+  same minor: openwebui's bundled redis `7.4.2-alpine3.21` -> `7.4.12-alpine3.21`,
+  argo-cd's bundled redis `8.2.2-alpine` -> `8.2.11-alpine` and its
+  redis_exporter `v1.80.1` -> `v1.80.2`, and the vllm runtime image for
+  gpt-oss-120b `v0.20.1` -> `v0.20.2`. No configuration changes.
+* litellm: the image tag is pinned to `1.109.1` instead of the floating
+  `main-stable` tag, which points at exactly this build (same digest).
+  Content is unchanged; the pin makes what gets deployed reproducible
+  and turns any drift into a visible version bump.
+
+### Fixed
+
+* sealed-secrets: the wrapper Service's instance selector now follows
+  the Helm release name instead of hardcoding `sealed-secrets` — under
+  any other release name the Service (which bears kubeseal's default
+  controller name) selected zero pods, making kubeseal hang against an
+  endpointless backend. Fixes #71.
+* Cleaned up some comments and empty fields not in use in helm templating
 
 ## [0.8.0] 2026-11-13
 
@@ -33,7 +88,7 @@ See [keep a changelog] for information about writing changes to this log.
   write (create, update, patch) on the transformed secret — previously
   verbs ["*"] on both. Fixes #60.
 
-# Changed
+### Changed
 
 * Updated open-webui to version 0.11.3 (recommend to set replica count to 1 before upgrade and restore after).
   See https://github.com/open-webui/open-webui/releases#release-v0.11.3 a lot have changed since 0.9.6.
@@ -42,7 +97,7 @@ See [keep a changelog] for information about writing changes to this log.
   we now primarily support. Unless custom work has been done on Authentik
   integration in a cluster, this should have no impact.
 
-# Fixed
+### Fixed
 
 * Cleaned up some comments and empty fields not in use in helm templating
 
@@ -154,10 +209,15 @@ See [keep a changelog] for information about writing changes to this log.
 * Comment out TTS/STT in Open-WebUI as this is not part of the default stack.
 * Disabled SSO in Open-WebUI.
 
-[Unreleased]: https://github.com/os2ai/documentation/compare/0.1.1...HEAD
-[0.5.0]: https://github.com/os2ai/documentation/compare/0.4.0...0.5.0
-[0.4.0]: https://github.com/os2ai/documentation/compare/0.3.0...0.4.0
-[0.3.0]: https://github.com/os2ai/documentation/compare/0.2.0...0.3.0
-[0.2.0]: https://github.com/os2ai/documentation/compare/0.1.1...0.2.0
-[0.1.1]: https://github.com/os2ai/documentation/compare/0.1.0...0.1.1
-[0.1.0]: https://github.com/os2ai/documentation/releases/tag/0.1.0
+[Unreleased]: https://github.com/os2ai/helm-deployments/compare/0.8.1...HEAD
+[0.8.1]: https://github.com/os2ai/helm-deployments/compare/0.8.0...0.8.1
+[0.8.0]: https://github.com/os2ai/helm-deployments/compare/0.7.0...0.8.0
+[0.7.0]: https://github.com/os2ai/helm-deployments/compare/0.6.0...0.7.0
+[0.6.0]: https://github.com/os2ai/helm-deployments/compare/0.5.0...0.6.0
+[0.5.1]: https://github.com/os2ai/helm-deployments/compare/0.5.0...0.5.1
+[0.5.0]: https://github.com/os2ai/helm-deployments/compare/0.4.0...0.5.0
+[0.4.0]: https://github.com/os2ai/helm-deployments/compare/0.3.0...0.4.0
+[0.3.0]: https://github.com/os2ai/helm-deployments/compare/0.2.0...0.3.0
+[0.2.0]: https://github.com/os2ai/helm-deployments/compare/0.1.1...0.2.0
+[0.1.1]: https://github.com/os2ai/helm-deployments/compare/0.1.0...0.1.1
+[0.1.0]: https://github.com/os2ai/helm-deployments/releases/tag/0.1.0

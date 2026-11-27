@@ -92,7 +92,7 @@ vllm:
 
       - name: gpt-oss-120b
         repository: vllm/vllm-openai
-        tag: v0.20.1
+        tag: v0.20.2
 
         modelURL: openai/gpt-oss-120b
 
